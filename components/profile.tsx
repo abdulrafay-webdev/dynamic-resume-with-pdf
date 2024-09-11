@@ -7,7 +7,7 @@ export const Profile = (props:any) => {
       <div>
         <Image
           className="rounded-full"
-          src={require("./images/rp.jpeg")}
+          src={require("./images/profile.png")}
           alt="profile pic"
         />
         <h1 className="md:text-3xl text-xs font-bold text-center text-white mb-1">{props.name}</h1>

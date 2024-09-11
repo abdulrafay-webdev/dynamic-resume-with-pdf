@@ -9,6 +9,8 @@ import { Experience } from "./experience";
 export const A4 = () => {
   const [step, setStep] = useState(1);
 
+  const [edit,setedit]=useState(false)
+
   const [formData, setFormData]: any = useState({
     name: "",
     designation: "",
@@ -55,6 +57,11 @@ export const A4 = () => {
     });
   };
 
+  const handleEdit=()=>{
+    setFormData(submitdata);
+    setedit(true);
+  };
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
     setsubmitdata(formData);
@@ -96,7 +103,7 @@ export const A4 = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col-reverse">
       {/* input form  */}
 
       <div className="min-h-[80vh] p-10 flex items-center justify-center bg-gray-100">
@@ -613,8 +620,6 @@ export const A4 = () => {
                 </div>
               </div>
             )}
-            {formData.name}
-            {formData.nationality}
           </form>
         </div>
         <div></div>
@@ -625,7 +630,7 @@ export const A4 = () => {
       {submitdata && (
         <div>
           {/* tablet view  */}
-          <div className="md:hidden bg-gray-200 flex justify-center items-center p-2">
+          <div className="md:hidden bg-gray-200 flex justify-center flex-col items-center p-2">
             <div className="a4-Msize shadow-lg overflow-hidden">
               <div className="w-full flex">
                 {/* sidebar  */}
@@ -674,9 +679,11 @@ export const A4 = () => {
                 </div>
               </div>
             </div>
+          {/* edit button  */}
+          <button className="bg-blue-500 ml-8 hover:bg-blue-700 text-white font-bold py-2 px-7 my-5 rounded" onClick={handleEdit}>Edit</button>
           </div>
           {/* desktop view   */}
-          <div className="hidden md:bg-gray-200 md:flex md:justify-center md:items-center md:p-4">
+          <div className="hidden md:bg-gray-200 md:flex md:justify-center md:items-center flex-col md:p-4">
             <div className="a4-size shadow-lg    overflow-hidden">
               <div className="w-full flex">
                 {/* sidebar  */}
@@ -725,6 +732,8 @@ export const A4 = () => {
                 </div>
               </div>
             </div>
+          {/* edit button  */}
+          <button className="bg-blue-500 ml-8 hover:bg-blue-700 text-white font-bold py-5 px-12 my-8 rounded" onClick={handleEdit}>Edit</button>
           </div>
         </div>
       )}
