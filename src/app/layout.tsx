@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dynamic Resume Builder Editable",
-  description: "milestone four",
+  title: "Resume Builder With Pdf",
+  description: "milestone five",
 };
 
 export default function RootLayout({

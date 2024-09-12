@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from "react";
+import { PDFViewer } from '@react-pdf/renderer';
 import { Profile } from "./profile";
 import { Objective } from "./objective";
 import { Education } from "./education";
 import { Skills } from "./skills";
 import { Experience } from "./experience";
+import PDFComponent from "./PDFComponent";
 
 export const A4 = () => {
   const [step, setStep] = useState(1);
 
-  const [edit,setedit]=useState(false)
+  const [edit, setedit] = useState(false);
 
   const [formData, setFormData]: any = useState({
     name: "",
@@ -41,7 +43,7 @@ export const A4 = () => {
     firstexpdescription: "",
     secondofficename: "",
     secondexpdescription: "",
-    objective:""
+    objective: "",
   });
 
   const [submitdata, setsubmitdata]: any = useState("");
@@ -57,49 +59,48 @@ export const A4 = () => {
     });
   };
 
-  const handleEdit=()=>{
+  const handleEdit = () => {
     setFormData(submitdata);
     setedit(true);
+    setStep(1);
   };
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
     setsubmitdata(formData);
-    setFormData(
-      {
-        name: "",
-      designation: "",
-      fname: "",
-      religion: "",
-      nationality: "",
-      domicile: "",
-      age: "",
-      phone: "",
-      email: "",
-      address: "",
-      school: "",
-      schoolyear: "",
-      schoolgrade: "",
-      college: "",
-      collegeyear: "",
-      collegegrade: "",
-      university: "",
-      universityyear: "",
-      universitygrade: "",
-      firstskillname: "",
-      firstdescription: "",
-      secondskillname: "",
-      seconddescription: "",
-      thirdskillname: "",
-      thirddescription: "",
-      firstofficename: "",
-      firstexpdescription: "",
-      secondofficename: "",
-      secondexpdescription: "",
-      objective:""
-      }
-    );
-    setStep(1);
+    // setFormData({
+    //   name: "",
+    //   designation: "",
+    //   fname: "",
+    //   religion: "",
+    //   nationality: "",
+    //   domicile: "",
+    //   age: "",
+    //   phone: "",
+    //   email: "",
+    //   address: "",
+    //   school: "",
+    //   schoolyear: "",
+    //   schoolgrade: "",
+    //   college: "",
+    //   collegeyear: "",
+    //   collegegrade: "",
+    //   university: "",
+    //   universityyear: "",
+    //   universitygrade: "",
+    //   firstskillname: "",
+    //   firstdescription: "",
+    //   secondskillname: "",
+    //   seconddescription: "",
+    //   thirdskillname: "",
+    //   thirddescription: "",
+    //   firstofficename: "",
+    //   firstexpdescription: "",
+    //   secondofficename: "",
+    //   secondexpdescription: "",
+    //   objective: "",
+    // });
+    // setStep(1);
   };
 
   return (
@@ -679,8 +680,14 @@ export const A4 = () => {
                 </div>
               </div>
             </div>
-          {/* edit button  */}
-          <button className="bg-blue-500 ml-8 hover:bg-blue-700 text-white font-bold py-2 px-7 my-5 rounded" onClick={handleEdit}>Edit</button>
+            {/* edit button  */}
+            <PDFComponent formData={formData} />
+            <button
+              className="bg-blue-500 ml-8 hover:bg-blue-700 text-white font-bold py-2 px-7 my-5 rounded"
+              onClick={handleEdit}
+            >
+              Edit
+            </button>
           </div>
           {/* desktop view   */}
           <div className="hidden md:bg-gray-200 md:flex md:justify-center md:items-center flex-col md:p-4">
@@ -732,11 +739,20 @@ export const A4 = () => {
                 </div>
               </div>
             </div>
-          {/* edit button  */}
-          <button className="bg-blue-500 ml-8 hover:bg-blue-700 text-white font-bold py-5 px-12 my-8 rounded" onClick={handleEdit}>Edit</button>
+            <PDFComponent formData={formData} />
+            {/* edit button  */}
+            <button
+              className="bg-blue-500 ml-8 hover:bg-blue-700 text-white font-bold py-5 px-12 my-3 rounded"
+              onClick={handleEdit}
+            >
+              Edit
+            </button>
           </div>
         </div>
       )}
+       {/* <PDFViewer className="w-full h-screen">
+            <PDFComponent formData={formData} />
+            </PDFViewer> */}
     </div>
   );
 };
