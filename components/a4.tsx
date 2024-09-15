@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { PDFViewer } from '@react-pdf/renderer';
 import { Profile } from "./profile";
 import { Objective } from "./objective";
 import { Education } from "./education";
@@ -114,7 +113,7 @@ export const A4 = () => {
             {step === 1 && (
               <div>
                 <h2 className="text-2xl font-semibold mb-6">
-                  Personal Information
+                  Personal Information{edit}
                 </h2>
                 <div className="mb-4">
                   <label className="block text-gray-700">Name</label>
